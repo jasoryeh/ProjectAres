@@ -41,6 +41,21 @@
         </dependency>
 
 
+        <!-- Some additional dependencies for ares -->
+
+        <dependency>
+            <groupId>tc.oc</groupId>
+            <artifactId>util-bukkit</artifactId>
+            <version>1.12.2-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>tc.oc</groupId>
+            <artifactId>api-bukkit</artifactId>
+            <version>1.12.2-SNAPSHOT</version>
+        </dependency>
+
+
         <!-- Testing -->
 
         <dependency>
@@ -100,7 +115,7 @@
             </plugin>
         </plugins>
     </build>
-    <reporting>
+    <!--<reporting>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -108,5 +123,5 @@
                 <version>2.5.2</version>
             </plugin>
         </plugins>
-    </reporting>
+    </reporting>-->
 </project>

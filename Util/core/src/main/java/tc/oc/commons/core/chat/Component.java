@@ -121,14 +121,14 @@ public class Component extends TextComponent {
     }
 
     public void mergeFormatTo(BaseComponent component) {
-        if(this.getColorRaw() != null) component.setColor(this.getColor());
-        if(this.isBoldRaw() != null) component.setBold(this.isBoldRaw());
-        if(this.isItalicRaw() != null) component.setItalic(this.isItalicRaw());
-        if(this.isUnderlinedRaw() != null) component.setUnderlined(this.isUnderlinedRaw());
-        if(this.isStrikethroughRaw() != null) component.setStrikethrough(this.isStrikethroughRaw());
-        if(this.isObfuscatedRaw() != null) component.setObfuscated(this.isObfuscatedRaw());
-        if(this.getClickEvent() != null) component.setClickEvent(this.getClickEvent());
-        if(this.getHoverEvent() != null) component.setHoverEvent(this.getHoverEvent());
+        if (this.getColorRaw() != null) component.setColor(this.getColor());
+        if (this.isBoldRaw() != null) component.setBold(this.isBoldRaw());
+        if (this.isItalicRaw() != null) component.setItalic(this.isItalicRaw());
+        if (this.isUnderlinedRaw() != null) component.setUnderlined(this.isUnderlinedRaw());
+        if (this.isStrikethroughRaw() != null) component.setStrikethrough(this.isStrikethroughRaw());
+        if (this.isObfuscatedRaw() != null) component.setObfuscated(this.isObfuscatedRaw());
+        if (this.getClickEvent() != null) component.setClickEvent(this.getClickEvent());
+        if (this.getHoverEvent() != null) component.setHoverEvent(this.getHoverEvent());
     }
 
     public Component clearFormat() {
@@ -143,7 +143,7 @@ public class Component extends TextComponent {
         return this;
     }
 
-    public Component add(ChatColor...formats) {
+    public Component add(ChatColor... formats) {
         Components.addFormats(this, formats);
         return this;
     }
@@ -153,7 +153,7 @@ public class Component extends TextComponent {
         return this;
     }
 
-    public Component remove(ChatColor...formats) {
+    public Component remove(ChatColor... formats) {
         Components.removeFormats(this, formats);
         return this;
     }
@@ -207,7 +207,7 @@ public class Component extends TextComponent {
         return this;
     }
 
-    public Component hoverEvent(HoverEvent.Action action, BaseComponent...values) {
+    public Component hoverEvent(HoverEvent.Action action, BaseComponent... values) {
         this.setHoverEvent(new HoverEvent(action, values));
         return this;
     }
@@ -225,7 +225,7 @@ public class Component extends TextComponent {
         return this;
     }
 
-    public Component extra(BaseComponent...extras) {
+    public Component extra(BaseComponent... extras) {
         return this.extra(Arrays.asList(extras));
     }
 
