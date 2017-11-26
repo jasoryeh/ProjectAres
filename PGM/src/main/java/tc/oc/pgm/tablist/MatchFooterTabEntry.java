@@ -62,9 +62,7 @@ public class MatchFooterTabEntry extends DynamicTabEntry {
 
         if(datacenter != null) {
             content.extra(new Component(datacenter, ChatColor.WHITE, ChatColor.BOLD),
-                          new Component(" - "),
-                          new Component(server, ChatColor.WHITE, ChatColor.BOLD),
-                          new Component(" | "));
+                          new Component(" - "));
         }
 
         content.extra(new Component(PGMTranslations.get().t("command.match.matchInfo.time", view.getViewer()) + ": ", ChatColor.GRAY),
