@@ -98,7 +98,9 @@ public class TargetedEventBusImpl implements PluginFacet, TargetedEventBus {
                 final SetMultimap<EventKey<? extends Event>, EventHandlerInfo<? extends Event>> handlerMap = listenerCache.getIfPresent(listener.getClass());
 
                 if(handlerMap == null) {
-                    exceptionHandler.handleException(new Exception("Targeted event listener is not registered: " + listener));
+                    /*exceptionHandler.handleException(new Exception("Targeted event listener is not registered: " + listener));*/
+                    //System out prinln for now so console doesn't get overloaded.
+                    System.out.println("Targeted event listener is not registered: " + listener);
                     continue;
                 }
 
