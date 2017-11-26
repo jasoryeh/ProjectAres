@@ -79,23 +79,28 @@ environment:
   ranked: false
 
 rotation:
-  default-name: default
+  default-name: default       # Name of rotation you want the server to use every time it starts
   initial-wait: 20000
-  providers: {}
+  providers: {}               # Remove {} if you want to add rotations
+#    file:
+#      name-of-rotation:
+#        path: path/to/rotation.txt
 
 map:
-  sources: {}
-#    public:
+  sources: {}                 # Remove {} if you want to maps
+#    name-of-maps:            # Name of the maps
 #      priority: 0
-#      path: /minecraft/repo/maps
+#      path: path/to/maps/folder
 #      only:
-#        - CTW
+#        - CTW                # Folders of maps you want to include
 #        - CTF
 #        - DTC
 #      url: https://maps.oc.tc/
 #      depth: 99
 #      global-includes: true
-  include-path: []
+  include-path: []            # Paths of includes you want to add, remove [] to add.
+#  - /path/to/first/include
+#  - /path/to/second/include
   autoreload:
     enabled: true
     reload-when-error: false
