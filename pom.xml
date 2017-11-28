@@ -26,6 +26,14 @@
             <id>pa-releases</id>
             <url>https://repo.extension.ws/content/repositories/releases</url>
         </repository>
+        <repository>
+            <id>jasoryeh-tpreleases</id>
+            <url>http://jh.jasoryeh.tk/nexus/content/repositories/thirdparty</url>
+        </repository>
+        <repository>
+            <id>jasoryeh-snapshots</id>
+            <url>http://jh.jasoryeh.tk/nexus/content/repositories/snapshots</url>
+        </repository>
     </repositories>
 
     <distributionManagement>
@@ -199,12 +207,12 @@
             <!-- Bukkit -->
             <dependency>
                 <groupId>tc.oc</groupId>
-                <artifactId>sportbukkit-api</artifactId>
+                <artifactId>sportbukkit</artifactId>
                 <version>1.12.2-R0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>tc.oc</groupId>
-                <artifactId>sportbukkit</artifactId>
+                <artifactId>sportbukkit-api</artifactId>
                 <version>1.12.2-R0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
