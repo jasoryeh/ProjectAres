@@ -38,7 +38,7 @@
         </resources>
         <plugins>
             <!-- Git versioning plugin -->
-            <!--<plugin>
+            <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
                 <version>2.1.0</version>
@@ -49,7 +49,7 @@
                          </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
