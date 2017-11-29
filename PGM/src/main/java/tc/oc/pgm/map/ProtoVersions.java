@@ -42,6 +42,9 @@ public class ProtoVersions {
     // Various changes to support dynamic filters
     public static final SemanticVersion DYNAMIC_FILTERS = new SemanticVersion(1, 4, 2);
 
+    // Proto after PGM turned open source
+    public static final SemanticVersion AFTER_OPEN_SOURCE = new SemanticVersion(1, 4, 3);
+
     // Current version - change this whenever we bump the proto
-    public static final SemanticVersion CURRENT = DYNAMIC_FILTERS;
+    public static final SemanticVersion CURRENT = AFTER_OPEN_SOURCE;
 }
