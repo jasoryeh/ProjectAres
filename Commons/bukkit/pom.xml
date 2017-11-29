@@ -58,6 +58,10 @@
             <artifactId>bukkit-settings</artifactId>
         </dependency>
 
+        <dependency>
+
+        </dependency>
+
 
         <!-- Testing -->
 
