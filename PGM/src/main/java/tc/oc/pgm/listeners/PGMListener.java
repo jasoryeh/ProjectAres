@@ -4,6 +4,8 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
@@ -18,6 +20,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.scoreboard.Team;
+import tc.oc.api.docs.virtual.MapDoc;
 import tc.oc.commons.bukkit.localization.Translations;
 import tc.oc.commons.core.logging.Loggers;
 import tc.oc.commons.core.plugin.PluginFacet;
