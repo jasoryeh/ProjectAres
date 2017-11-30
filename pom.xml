@@ -38,11 +38,11 @@
 
     <distributionManagement>
         <repository>
-            <id>jh-repo</id>
+            <id>jh-releases</id>
             <url>http://jh.jasoryeh.tk/nexus/content/repositories/releases</url>
         </repository>
         <snapshotRepository>
-            <id>jh-repo</id>
+            <id>jh-snapshots</id>
             <url>http://jh.jasoryeh.tk/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
