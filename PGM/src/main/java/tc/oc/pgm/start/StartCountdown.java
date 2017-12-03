@@ -49,7 +49,9 @@ public class StartCountdown extends PreMatchCountdown {
         BaseComponent text = new Component(new TranslatableComponent("countdown.matchStart.message",
                 secondsRemaining(ChatColor.DARK_RED)),
                 ChatColor.GREEN);
-        viewer.sendMessage(text);
+        if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
+            viewer.sendMessage(text);
+        }
         return text;
     }
 

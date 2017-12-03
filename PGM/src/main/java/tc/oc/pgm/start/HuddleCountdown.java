@@ -38,7 +38,9 @@ public class HuddleCountdown extends PreMatchCountdown implements Listener {
         BaseComponent text = new Component(new TranslatableComponent("countdown.huddle.message",
                                                        secondsRemaining(ChatColor.DARK_RED)),
                              ChatColor.YELLOW);
-        viewer.sendMessage(text);
+        if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
+            viewer.sendMessage(text);
+        }
         return text;
     }
 

@@ -42,7 +42,9 @@ public class TimeLimitCountdown extends MatchCountdown {
     public BaseComponent barText(Player viewer) {
         BaseComponent text =  new Component(new TranslatableComponent("match.timeRemaining", new Component(colonTime(), textColor())),
                              ChatColor.AQUA);
-        viewer.sendMessage(text);
+        if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
+            viewer.sendMessage(text);
+        }
         return text;
     }
 
