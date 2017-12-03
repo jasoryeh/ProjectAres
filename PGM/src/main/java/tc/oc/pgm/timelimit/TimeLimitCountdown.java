@@ -40,8 +40,10 @@ public class TimeLimitCountdown extends MatchCountdown {
 
     @Override
     public BaseComponent barText(Player viewer) {
-        return new Component(new TranslatableComponent("match.timeRemaining", new Component(colonTime(), textColor())),
+        BaseComponent text =  new Component(new TranslatableComponent("match.timeRemaining", new Component(colonTime(), textColor())),
                              ChatColor.AQUA);
+        viewer.sendMessage(text);
+        return text;
     }
 
     @Override
