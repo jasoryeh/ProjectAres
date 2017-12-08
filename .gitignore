@@ -1,5 +1,7 @@
 # Maven generated files
 target
+target/
+*/target/
 *.jar
 dependency-reduced-pom.xml
 

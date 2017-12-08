@@ -13,6 +13,7 @@ import tc.oc.commons.bukkit.chat.BukkitSound;
 import tc.oc.commons.core.chat.Component;
 import tc.oc.pgm.countdowns.MatchCountdown;
 import tc.oc.pgm.match.Match;
+import tc.oc.pgm.utils.DurationConverter;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -40,9 +41,12 @@ public class TimeLimitCountdown extends MatchCountdown {
 
     @Override
     public BaseComponent barText(Player viewer) {
-        BaseComponent text =  new Component(new TranslatableComponent("match.timeRemaining", new Component(colonTime(), textColor())),
-                             ChatColor.AQUA);
-        if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
+        /*BaseComponent text =  new Component(new TranslatableComponent("match.timeRemaining", new Component(colonTime(), textColor())),
+                             ChatColor.AQUA);*/
+        BaseComponent text =  new Component("Time remaining: " + DurationConverter.getReadableFormat(remaining,
+                textColor(), ChatColor.AQUA, false),
+                ChatColor.AQUA);
+        if((remaining.getSeconds() % 30 == 0) || remaining.getSeconds() <=5) {
             viewer.sendMessage(text);
         }
         return text;

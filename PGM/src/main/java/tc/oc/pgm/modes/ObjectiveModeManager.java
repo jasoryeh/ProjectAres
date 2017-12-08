@@ -31,6 +31,7 @@ import tc.oc.pgm.goals.ModeChangeGoal;
 import tc.oc.pgm.match.Match;
 import tc.oc.pgm.match.MatchScope;
 import tc.oc.pgm.timelimit.TimeLimitCountdown;
+import tc.oc.pgm.utils.DurationConverter;
 
 @ListenerScope(MatchScope.LOADED)
 public class ObjectiveModeManager implements Listener {
@@ -127,10 +128,13 @@ public class ObjectiveModeManager implements Listener {
 
         @Override
         public BaseComponent barText(Player viewer) {
-            BaseComponent text = new Component(new TranslatableComponent("match.objectiveMode.countdown",
+            /*BaseComponent text = new Component(new TranslatableComponent("match.objectiveMode.countdown",
                                                            new Component(name(mode), ChatColor.GOLD),
                                                            secondsRemaining(ChatColor.AQUA)),
-                                 ChatColor.DARK_AQUA);
+                                 ChatColor.DARK_AQUA);*/
+            BaseComponent text = new Component(ChatColor.GOLD + name(mode).toLegacyText() + ChatColor.DARK_AQUA + " in " +
+                    DurationConverter.getReadableFormat(remaining, ChatColor.AQUA, ChatColor.DARK_AQUA, false),
+                    ChatColor.DARK_AQUA);
             if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
                 viewer.sendMessage(text);
             }

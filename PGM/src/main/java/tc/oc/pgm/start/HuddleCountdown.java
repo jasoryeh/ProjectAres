@@ -22,6 +22,7 @@ import tc.oc.pgm.match.MatchPlayer;
 import tc.oc.pgm.match.MatchScope;
 import tc.oc.pgm.match.MatchState;
 import tc.oc.pgm.teams.Team;
+import tc.oc.pgm.utils.DurationConverter;
 
 /**
  * Optional countdown between teams being finalized and match starting
@@ -35,9 +36,12 @@ public class HuddleCountdown extends PreMatchCountdown implements Listener {
 
     @Override
     public BaseComponent barText(Player viewer) {
-        BaseComponent text = new Component(new TranslatableComponent("countdown.huddle.message",
+        /*BaseComponent text = new Component(new TranslatableComponent("countdown.huddle.message",
                                                        secondsRemaining(ChatColor.DARK_RED)),
-                             ChatColor.YELLOW);
+                             ChatColor.YELLOW);*/
+        BaseComponent text = new Component("Team huddle ends in " + DurationConverter
+                .getReadableFormat(remaining, ChatColor.DARK_RED, ChatColor.YELLOW, false),
+                ChatColor.YELLOW);
         if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
             viewer.sendMessage(text);
         }
