@@ -9,7 +9,6 @@ import javax.inject.Inject;
 
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
@@ -22,12 +21,10 @@ import tc.oc.commons.bukkit.bossbar.BossBarFactory;
 import tc.oc.commons.bukkit.chat.ComponentRenderContext;
 import tc.oc.commons.core.chat.Components;
 import tc.oc.commons.core.util.MapUtils;
-import tc.oc.pgm.countdowns.MatchCountdown;
 import tc.oc.pgm.events.ListenerScope;
 import tc.oc.pgm.events.PlayerChangePartyEvent;
 import tc.oc.pgm.match.MatchModule;
 import tc.oc.pgm.match.MatchScope;
-import tc.oc.pgm.start.StartCountdown;
 
 @ListenerScope(MatchScope.LOADED)
 public class BossBarMatchModule extends MatchModule implements Listener {

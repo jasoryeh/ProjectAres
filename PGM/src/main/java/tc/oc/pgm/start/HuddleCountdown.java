@@ -35,11 +35,9 @@ public class HuddleCountdown extends PreMatchCountdown implements Listener {
 
     @Override
     public BaseComponent barText(Player viewer) {
-        BaseComponent text = new Component(new TranslatableComponent("countdown.huddle.message",
+        return new Component(new TranslatableComponent("countdown.huddle.message",
                                                        secondsRemaining(ChatColor.DARK_RED)),
                              ChatColor.YELLOW);
-        viewer.sendMessage(text);
-        return text;
     }
 
     @Override

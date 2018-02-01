@@ -46,11 +46,9 @@ public class StartCountdown extends PreMatchCountdown {
 
     @Override
     public BaseComponent barText(Player viewer) {
-        BaseComponent text = new Component(new TranslatableComponent("countdown.matchStart.message",
-                secondsRemaining(ChatColor.DARK_RED)),
-                ChatColor.GREEN);
-        viewer.sendMessage(text);
-        return text;
+        return new Component(new TranslatableComponent("countdown.matchStart.message",
+                                                       secondsRemaining(ChatColor.DARK_RED)),
+                             ChatColor.GREEN);
     }
 
     @Override

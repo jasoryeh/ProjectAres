@@ -127,12 +127,10 @@ public class ObjectiveModeManager implements Listener {
 
         @Override
         public BaseComponent barText(Player viewer) {
-            BaseComponent text = new Component(new TranslatableComponent("match.objectiveMode.countdown",
+            return new Component(new TranslatableComponent("match.objectiveMode.countdown",
                                                            new Component(name(mode), ChatColor.GOLD),
                                                            secondsRemaining(ChatColor.AQUA)),
                                  ChatColor.DARK_AQUA);
-            viewer.sendMessage(text);
-            return text;
         }
 
         @Override

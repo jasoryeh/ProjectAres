@@ -229,16 +229,12 @@ public class RestartListener implements PluginFacet, Listener {
         @Override
         public BaseComponent barText(Player viewer) {
             if(Comparables.greaterThan(remaining, Duration.ZERO)) {
-                BaseComponent text = new Component(new TranslatableComponent("broadcast.serverRestart.message",
+                return new Component(new TranslatableComponent("broadcast.serverRestart.message",
                                                                secondsRemaining(ChatColor.DARK_RED)),
                                      ChatColor.AQUA);
-                viewer.sendMessage(text);
-                return text;
             } else {
-                BaseComponent text = new Component(new TranslatableComponent("broadcast.serverRestart.kickMsg"),
+                return new Component(new TranslatableComponent("broadcast.serverRestart.kickMsg"),
                                      ChatColor.RED);
-                viewer.sendMessage(text);
-                return text;
             }
         }
 
