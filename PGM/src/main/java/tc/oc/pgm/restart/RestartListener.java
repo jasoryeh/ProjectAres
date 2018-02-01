@@ -32,7 +32,6 @@ import tc.oc.pgm.events.MatchUnloadEvent;
 import tc.oc.pgm.events.PlayerPartyChangeEvent;
 import tc.oc.pgm.match.Match;
 import tc.oc.pgm.match.MatchManager;
-import tc.oc.pgm.utils.DurationConverter;
 
 /**
  * Listens for {@link RequestRestartEvent} and defers it until after the current match
@@ -230,18 +229,15 @@ public class RestartListener implements PluginFacet, Listener {
         @Override
         public BaseComponent barText(Player viewer) {
             if(Comparables.greaterThan(remaining, Duration.ZERO)) {
-                /*BaseComponent text = new Component(new TranslatableComponent("broadcast.serverRestart.message",
+                BaseComponent text = new Component(new TranslatableComponent("broadcast.serverRestart.message",
                                                                secondsRemaining(ChatColor.DARK_RED)),
-                                     ChatColor.AQUA);*/
-                BaseComponent text = new Component("Server restarting in " + DurationConverter
-                        .getReadableFormat(remaining, ChatColor.DARK_RED, ChatColor.AQUA, false),
-                        ChatColor.AQUA);
+                                     ChatColor.AQUA);
                 if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
                     viewer.sendMessage(text);
                 }
                 return text;
             } else {
-                BaseComponent text = new Component("Server restarting!",
+                BaseComponent text = new Component(new TranslatableComponent("broadcast.serverRestart.kickMsg"),
                                      ChatColor.RED);
                 if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
                     viewer.sendMessage(text);

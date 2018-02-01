@@ -6,7 +6,6 @@ import javax.annotation.Nullable;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TranslatableComponent;
-import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.entity.Player;
 import tc.oc.commons.core.chat.Component;
@@ -15,7 +14,6 @@ import tc.oc.pgm.match.Match;
 import tc.oc.pgm.match.MatchState;
 import tc.oc.pgm.teams.Team;
 import tc.oc.pgm.teams.TeamMatchModule;
-import tc.oc.pgm.utils.DurationConverter;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -48,11 +46,8 @@ public class StartCountdown extends PreMatchCountdown {
 
     @Override
     public BaseComponent barText(Player viewer) {
-        /*BaseComponent text = new Component(new TranslatableComponent("countdown.matchStart.message",
+        BaseComponent text = new Component(new TranslatableComponent("countdown.matchStart.message",
                 secondsRemaining(ChatColor.DARK_RED)),
-                ChatColor.GREEN);*/
-        BaseComponent text = new Component("Match starting in " + DurationConverter.getReadableFormat(remaining,
-                ChatColor.RED, ChatColor.GREEN, true) + " seconds",
                 ChatColor.GREEN);
         if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
             viewer.sendMessage(text);

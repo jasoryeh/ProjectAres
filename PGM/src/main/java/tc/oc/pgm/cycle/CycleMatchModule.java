@@ -45,7 +45,6 @@ import tc.oc.pgm.match.Repeatable;
 import tc.oc.pgm.match.inject.MatchModuleFixtureManifest;
 import tc.oc.pgm.module.ModuleDescription;
 import tc.oc.pgm.restart.RestartListener;
-import tc.oc.pgm.utils.DurationConverter;
 import tc.oc.time.Time;
 
 @ModuleDescription(name = "Cycle")
@@ -231,16 +230,13 @@ public class CycleMatchModule extends MatchModule implements Listener {
             BaseComponent mapName = new Component(nextMap.getInfo().name, ChatColor.AQUA);
 
             if(Comparables.greaterThan(remaining, Duration.ZERO)) {
-                // BaseComponent text = new Component(new TranslatableComponent("countdown.cycle.message", mapName, secondsRemaining(ChatColor.DARK_RED)), ChatColor.DARK_AQUA);
-                BaseComponent text = new Component("Cycling to " + mapName.toLegacyText() + " in " +
-                        DurationConverter.getReadableFormat(remaining, ChatColor.DARK_RED, ChatColor.DARK_AQUA, true) + " seconds", ChatColor.DARK_AQUA);
+                BaseComponent text = new Component(new TranslatableComponent("countdown.cycle.message", mapName, secondsRemaining(ChatColor.DARK_RED)), ChatColor.DARK_AQUA);
                 if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
                     viewer.sendMessage(text);
                 }
                 return text;
             } else {
-                // BaseComponent text = new Component(new TranslatableComponent("countdown.cycle.complete", mapName), ChatColor.DARK_AQUA);
-                BaseComponent text = new Component("Cycled to " + mapName.toLegacyText(), ChatColor.DARK_AQUA);
+                BaseComponent text = new Component(new TranslatableComponent("countdown.cycle.complete", mapName), ChatColor.DARK_AQUA);
                 if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
                     viewer.sendMessage(text);
                 }
