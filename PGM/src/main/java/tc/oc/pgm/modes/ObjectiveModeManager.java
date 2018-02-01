@@ -131,9 +131,7 @@ public class ObjectiveModeManager implements Listener {
                                                            new Component(name(mode), ChatColor.GOLD),
                                                            secondsRemaining(ChatColor.AQUA)),
                                  ChatColor.DARK_AQUA);
-            if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
-                viewer.sendMessage(text);
-            }
+            viewer.sendMessage(text);
             return text;
         }
 

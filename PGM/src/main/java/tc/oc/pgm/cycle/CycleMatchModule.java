@@ -231,15 +231,11 @@ public class CycleMatchModule extends MatchModule implements Listener {
 
             if(Comparables.greaterThan(remaining, Duration.ZERO)) {
                 BaseComponent text = new Component(new TranslatableComponent("countdown.cycle.message", mapName, secondsRemaining(ChatColor.DARK_RED)), ChatColor.DARK_AQUA);
-                if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
-                    viewer.sendMessage(text);
-                }
+                viewer.sendMessage(text.toLegacyText());
                 return text;
             } else {
                 BaseComponent text = new Component(new TranslatableComponent("countdown.cycle.complete", mapName), ChatColor.DARK_AQUA);
-                if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
-                    viewer.sendMessage(text);
-                }
+                viewer.sendMessage(text);
                 return text;
             }
         }

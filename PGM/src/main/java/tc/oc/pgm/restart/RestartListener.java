@@ -232,16 +232,12 @@ public class RestartListener implements PluginFacet, Listener {
                 BaseComponent text = new Component(new TranslatableComponent("broadcast.serverRestart.message",
                                                                secondsRemaining(ChatColor.DARK_RED)),
                                      ChatColor.AQUA);
-                if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
-                    viewer.sendMessage(text);
-                }
+                viewer.sendMessage(text);
                 return text;
             } else {
                 BaseComponent text = new Component(new TranslatableComponent("broadcast.serverRestart.kickMsg"),
                                      ChatColor.RED);
-                if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
-                    viewer.sendMessage(text);
-                }
+                viewer.sendMessage(text);
                 return text;
             }
         }

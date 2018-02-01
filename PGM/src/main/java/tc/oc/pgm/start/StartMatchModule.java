@@ -45,9 +45,7 @@ public class StartMatchModule extends MatchModule implements Listener {
         public BaseComponent barText(Player viewer) {
             checkState(!unreadyReasons.isEmpty());
             BaseComponent text = new Component(unreadyReasons.iterator().next().getReason(), ChatColor.RED);
-            if((remaining.getSeconds() % 10 == 0) || remaining.getSeconds() <=5) {
-                viewer.sendMessage(text);
-            }
+            viewer.sendMessage(text);
             return text;
         }
 
