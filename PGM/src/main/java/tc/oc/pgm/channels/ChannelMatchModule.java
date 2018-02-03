@@ -191,8 +191,10 @@ public class ChannelMatchModule extends MatchModule implements Listener {
             PartyChannel channel = partyChannels.get(event.getOldParty());
 
             if(channel != null) {
-                bukkitPlayer.removeAttachments(channel.getListeningPermission());
-                bukkitPlayer.removeAttachments(matchListeningPermission);
+                if(bukkitPlayer.getAttachments().contains(channel.getListeningPermission()))
+                    bukkitPlayer.removeAttachments(channel.getListeningPermission());
+                if(bukkitPlayer.getAttachments().contains(matchListeningPermission))
+                    bukkitPlayer.removeAttachments(matchListeningPermission);
 
                 // Whenever the player leaves a party with its own channel, check if that is the player's current channel,
                 // and if it's not, then set their team chat setting to false. This is the only way to find out when they

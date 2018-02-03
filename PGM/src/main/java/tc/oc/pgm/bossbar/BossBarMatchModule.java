@@ -129,6 +129,8 @@ public class BossBarMatchModule extends MatchModule implements Listener {
         public void render() {
             final Optional<BossBarContent> content = source.barContent(viewer);
 
+            //viewer.sendMessage(content.get().text().toLegacyText());
+
             if(!content.isPresent()) {
                 bar.setVisible(false);
                 return; // Don't try to get any other properties when hidden

@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import javax.inject.Inject;
 
+import com.github.rmsy.channels.vault.VaultSetup;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.minecraft.server.Packet;
 import net.minecraft.server.PacketPlayOutPlayerInfo;
@@ -13,6 +14,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import tc.oc.commons.bukkit.chat.ComponentRenderContext;
 import tc.oc.commons.bukkit.util.NMSHacks;
+import tc.oc.commons.core.chat.Component;
 
 public class TabRender {
 
@@ -50,7 +52,9 @@ public class TabRender {
     }
 
     private void appendAddition(TabEntry entry, int index) {
-        BaseComponent displayName = this.getContent(entry, index);
+        BaseComponent displayName = new Component();
+        displayName.addExtra(this.getContent(entry, index));
+        displayName.addExtra(VaultSetup.getPrefix(entry.getFakePlayer(this.view)));
         this.addPacket.add(NMSHacks.playerListPacketData(this.addPacket,
                                                          entry.getId(),
                                                          entry.getName(this.view),
