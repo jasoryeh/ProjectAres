@@ -129,7 +129,7 @@ public class BossBarMatchModule extends MatchModule implements Listener {
         public void render() {
             final Optional<BossBarContent> content = source.barContent(viewer);
 
-            //viewer.sendMessage(content.get().text().toLegacyText());
+            //viewer.sendMessage(content.get().text());
 
             if(!content.isPresent()) {
                 bar.setVisible(false);

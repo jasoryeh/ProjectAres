@@ -1,5 +1,6 @@
 package tc.oc.pgm.channels;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
@@ -7,11 +8,13 @@ import javax.inject.Inject;
 import com.github.rmsy.channels.Channel;
 import com.github.rmsy.channels.ChannelsPlugin;
 import com.github.rmsy.channels.PlayerManager;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.Plugin;
 import tc.oc.chatmoderator.ChatModeratorPlugin;
@@ -191,10 +194,22 @@ public class ChannelMatchModule extends MatchModule implements Listener {
             PartyChannel channel = partyChannels.get(event.getOldParty());
 
             if(channel != null) {
-                if(bukkitPlayer.getAttachments().contains(channel.getListeningPermission()))
-                    bukkitPlayer.removeAttachments(channel.getListeningPermission());
-                if(bukkitPlayer.getAttachments().contains(matchListeningPermission))
-                    bukkitPlayer.removeAttachments(matchListeningPermission);
+                Collection<PermissionAttachmentInfo> var1;
+                try {
+                    var1 = bukkitPlayer.getAttachments();
+                } catch(Exception e) {
+                    Bukkit.getLogger().info("Error getting attachments");
+                    e.printStackTrace();
+                    var1 = null;
+                }
+                if(var1 != null) {
+                    if(bukkitPlayer.getAttachments().contains(channel.getListeningPermission()))
+                        bukkitPlayer.removeAttachments(channel.getListeningPermission());
+                    if(bukkitPlayer.getAttachments().contains(matchListeningPermission))
+                        bukkitPlayer.removeAttachments(matchListeningPermission);
+                } else {
+                    Bukkit.getLogger().info("Null attatchments for " + bukkitPlayer.getName());
+                }
 
                 // Whenever the player leaves a party with its own channel, check if that is the player's current channel,
                 // and if it's not, then set their team chat setting to false. This is the only way to find out when they
