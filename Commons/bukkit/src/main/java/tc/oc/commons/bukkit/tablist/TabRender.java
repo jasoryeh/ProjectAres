@@ -54,7 +54,7 @@ public class TabRender {
     private void appendAddition(TabEntry entry, int index) {
         BaseComponent displayName = new Component();
         displayName.addExtra(this.getContent(entry, index));
-        displayName.addExtra(VaultSetup.getPrefix(entry.getFakePlayer(this.view)));
+        //displayName.addExtra(VaultSetup.getPrefix(entry.getFakePlayer(this.view)));
         this.addPacket.add(NMSHacks.playerListPacketData(this.addPacket,
                                                          entry.getId(),
                                                          entry.getName(this.view),

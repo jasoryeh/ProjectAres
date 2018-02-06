@@ -2,6 +2,7 @@ package tc.oc.commons.bukkit.util;
 
 import java.util.Map;
 
+import com.github.rmsy.channels.vault.VaultListeners;
 import org.bukkit.permissions.Permissible;
 import org.bukkit.permissions.PermissionAttachment;
 import tc.oc.api.util.Permissions;

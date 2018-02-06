@@ -16,56 +16,7 @@ import com.google.common.collect.Lists;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import net.md_5.bungee.api.chat.BaseComponent;
-import net.minecraft.server.Block;
-import net.minecraft.server.BlockPosition;
-import net.minecraft.server.DataWatcher;
-import net.minecraft.server.Enchantment;
-import net.minecraft.server.EntityArmorStand;
-import net.minecraft.server.EntityChicken;
-import net.minecraft.server.EntityFireworks;
-import net.minecraft.server.EntityItem;
-import net.minecraft.server.EntityLiving;
-import net.minecraft.server.EntityPlayer;
-import net.minecraft.server.EntityTrackerEntry;
-import net.minecraft.server.EntityTypes;
-import net.minecraft.server.EntityZombie;
-import net.minecraft.server.EnumGamemode;
-import net.minecraft.server.EnumHand;
-import net.minecraft.server.EnumItemSlot;
-import net.minecraft.server.EnumParticle;
-import net.minecraft.server.IBlockData;
-import net.minecraft.server.Item;
-import net.minecraft.server.ItemStack;
-import net.minecraft.server.Items;
-import net.minecraft.server.MinecraftKey;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.MobEffect;
-import net.minecraft.server.MobEffectList;
-import net.minecraft.server.NBTTagCompound;
-import net.minecraft.server.Packet;
-import net.minecraft.server.PacketPlayInUseEntity;
-import net.minecraft.server.PacketPlayOutEntity;
-import net.minecraft.server.PacketPlayOutEntityDestroy;
-import net.minecraft.server.PacketPlayOutEntityEffect;
-import net.minecraft.server.PacketPlayOutEntityEquipment;
-import net.minecraft.server.PacketPlayOutEntityMetadata;
-import net.minecraft.server.PacketPlayOutEntityTeleport;
-import net.minecraft.server.PacketPlayOutEntityVelocity;
-import net.minecraft.server.PacketPlayOutMount;
-import net.minecraft.server.PacketPlayOutNamedEntitySpawn;
-import net.minecraft.server.PacketPlayOutPlayerInfo;
-import net.minecraft.server.PacketPlayOutRemoveEntityEffect;
-import net.minecraft.server.PacketPlayOutScoreboardTeam;
-import net.minecraft.server.PacketPlayOutSpawnEntity;
-import net.minecraft.server.PacketPlayOutSpawnEntityLiving;
-import net.minecraft.server.PacketPlayOutWorldBorder;
-import net.minecraft.server.PacketPlayOutWorldParticles;
-import net.minecraft.server.PlayerInteractManager;
-import net.minecraft.server.SoundCategory;
-import net.minecraft.server.SoundEffect;
-import net.minecraft.server.TileEntitySkull;
-import net.minecraft.server.WorldBorder;
-import net.minecraft.server.WorldServer;
+import net.minecraft.server.*;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -400,6 +351,100 @@ public class NMSHacks {
 
         protected Packet<?> spawnPacket() {
             return new PacketPlayOutSpawnEntityLiving(entity);
+        }
+    }
+
+    public static class FakeWither extends FakeLivingEntity<EntityWither> {
+        public FakeWither(World world, boolean invisible, String name) {
+            super(new EntityWither(((CraftWorld) world).getHandle()));
+
+            if(name != null) entity.setCustomName(name);
+            entity.setCustomNameVisible(true);
+            entity.setInvisible(true);
+
+            entity.setNoAI(true);
+            entity.setInvisible(invisible);
+            entity.setInvulnerable(true);
+            entity.setSilent(true);
+            entity.setNoGravity(true);
+        }
+
+        public void change(Player p, boolean update, String name, Boolean nameVisible, Double percent, Boolean ai,
+                           Boolean invisible, Boolean invulnerable) {
+            entity.setCustomName(name == null ? entity.getCustomName() : name);
+            entity.setCustomNameVisible(nameVisible == null ? entity.getCustomNameVisible() : nameVisible);
+            entity.setHealth(percent == null ? entity.getHealth() : percent.floatValue() * entity.getMaxHealth());
+            entity.setNoAI(ai == null ? entity.isNoAI() : !ai);
+            entity.setInvisible(invisible == null ? entity.isInvisible() : invisible);
+            entity.setInvulnerable(invulnerable == null ? true : invulnerable);
+            if(update) sendPacket(p, entityMetadataPacket(entity, true));
+        }
+
+        public void setName(Player p, String name, Boolean update) {
+            change(p, update, name, true, null, null, null, null);
+        }
+
+        public void setPercent(Player p, Double percent, Boolean update) {
+            change(p, update, null, null, percent, null, null, null);
+        }
+
+        public void setAi(Player p, Boolean ai, Boolean update) {
+            change(p, update, null, null, null, ai, null, null);
+        }
+
+        public void setVisible(Player p, Boolean visible, Boolean update) {
+            change(p, update, null, null, null, null, !visible, null);
+        }
+
+        public void setInvulnerable(Player p, Boolean invulnerable, Boolean update) {
+            change(p, update, null, null, null, null, null, invulnerable);
+        }
+    }
+
+    public static class FakeEnderDragon extends FakeLivingEntity<EntityEnderDragon> {
+        public FakeEnderDragon(World world, boolean invisible, String name) {
+            super(new EntityEnderDragon(((CraftWorld) world).getHandle()));
+
+            if(name != null) entity.setCustomName(name);
+            entity.setCustomNameVisible(true);
+            entity.setInvisible(true);
+
+            entity.setNoAI(true);
+            entity.setInvisible(invisible);
+            entity.setInvulnerable(true);
+            entity.setSilent(true);
+            entity.setNoGravity(true);
+        }
+
+        public void change(Player p, boolean update, String name, Boolean nameVisible, Double percent, Boolean ai,
+                           Boolean invisible, Boolean invulnerable) {
+            entity.setCustomName(name == null ? entity.getCustomName() : name);
+            entity.setCustomNameVisible(nameVisible == null ? entity.getCustomNameVisible() : nameVisible);
+            entity.setHealth(percent == null ? entity.getHealth() : percent.floatValue() * entity.getMaxHealth());
+            entity.setNoAI(ai == null ? entity.isNoAI() : !ai);
+            entity.setInvisible(invisible == null ? entity.isInvisible() : invisible);
+            entity.setInvulnerable(invulnerable == null ? true : invulnerable);
+            if(update) sendPacket(p, entityMetadataPacket(entity, true));
+        }
+
+        public void setName(Player p, String name, Boolean update) {
+            change(p, update, name, true, null, null, null, null);
+        }
+
+        public void setPercent(Player p, Double percent, Boolean update) {
+            change(p, update, null, null, percent, null, null, null);
+        }
+
+        public void setAi(Player p, Boolean ai, Boolean update) {
+            change(p, update, null, null, null, ai, null, null);
+        }
+
+        public void setVisible(Player p, Boolean visible, Boolean update) {
+            change(p, update, null, null, null, null, !visible, null);
+        }
+
+        public void setInvulnerable(Player p, Boolean invulnerable, Boolean update) {
+            change(p, update, null, null, null, null, null, invulnerable);
         }
     }
 

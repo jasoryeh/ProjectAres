@@ -9,6 +9,7 @@ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.entity.Player;
+import tc.oc.minecraft.protocol.MinecraftVersion;
 
 /**
  * A retained UI component that renders text and a health amount to the boss bar
@@ -50,7 +51,7 @@ public interface BossBarSource {
     }
 
     default BarColor barColor(Player viewer) {
-        return BarColor.BLUE;
+        return viewer.getProtocolVersion() <= MinecraftVersion.MINECRAFT_1_8.protocol() ? BarColor.PURPLE : BarColor.BLUE;
     }
 
     default BarStyle barStyle(Player viewer) {

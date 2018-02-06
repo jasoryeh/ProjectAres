@@ -42,9 +42,9 @@ public class ProtoVersions {
     // Various changes to support dynamic filters
     public static final SemanticVersion DYNAMIC_FILTERS = new SemanticVersion(1, 4, 2);
 
-    // Proto after PGM turned open source
-    public static final SemanticVersion AFTER_OPEN_SOURCE = new SemanticVersion(1, 4, 3);
+    // Proto after PGM turned open source, now named ENABLE_BLOCK_36 to match other servers' proto versioning
+    public static final SemanticVersion ENABLE_BLOCK_36 = new SemanticVersion(1, 4, 3);
 
     // Current version - change this whenever we bump the proto
-    public static final SemanticVersion CURRENT = AFTER_OPEN_SOURCE;
+    public static final SemanticVersion CURRENT = ENABLE_BLOCK_36;
 }
