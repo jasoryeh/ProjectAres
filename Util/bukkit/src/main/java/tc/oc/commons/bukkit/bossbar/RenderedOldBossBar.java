@@ -165,7 +165,7 @@ public class RenderedOldBossBar extends LegacyBossBar implements BossBar {
 
     public Location getFakeEntityLocation(Player p) {
         Location l = p.getEyeLocation().clone();
-        l.setPitch(l.getPitch() - 20);
+        l.setPitch(l.getPitch() + 45);
         return p.getEyeLocation().add(l.getDirection().multiply(32));
     }
 }
