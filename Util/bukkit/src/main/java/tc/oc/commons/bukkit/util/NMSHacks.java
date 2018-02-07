@@ -377,6 +377,7 @@ public class NMSHacks {
             entity.setNoAI(ai == null ? entity.isNoAI() : !ai);
             entity.setInvisible(invisible == null ? entity.isInvisible() : invisible);
             entity.setInvulnerable(invulnerable == null ? true : invulnerable);
+            entity.g(980);
             if(update) sendPacket(p, entityMetadataPacket(entity, true));
         }
 
